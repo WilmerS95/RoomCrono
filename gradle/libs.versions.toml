@@ -6,6 +6,7 @@ androidGradle = "7.4.2"
 androidGradleVersion = "4.1.3"
 androidxHiltCompiler = "1.2.0"
 androidxHiltCompilerVersion = "1.2.0"
+appcompatVersion = "1.3.1"
 comGoogleDaggerHiltAndroid = "2.51.1"
 converterGson = "2.9.0"
 converterScalars = "2.9.0"
@@ -16,6 +17,7 @@ googleHiltAndroidVersion = "2.51.1"
 googleHiltCompiler = "2.51.1"
 gradle = "8.1.4"
 gradleVersion = "8.0.2"
+gson = "2.10.1"
 hiltAndroid = "2.51.1"
 hiltAndroidCompiler = "2.51.1"
 hiltAndroidCompilerVersion = "2.51.1"
@@ -41,6 +43,7 @@ activityCompose = "1.9.0"
 composeBom = "2024.06.00"
 loggingInterceptor = "4.12.0"
 navigationCompose = "2.7.7"
+recyclerview = "1.3.2"
 retrofit = "2.9.0"
 roomRuntime = "2.6.1"
 swipe = "1.1.1"
@@ -56,6 +59,7 @@ roomCompilerProcessingTesting = "2.6.1"
 accompanist-pager = { module = "com.google.accompanist:accompanist-pager", version.ref = "accompanistPager" }
 accompanist-pager-v0202 = { module = "com.google.accompanist:accompanist-pager", version.ref = "accompanistPagerVersion" }
 adapter-rxjava2 = { module = "com.squareup.retrofit2:adapter-rxjava2" }
+androidx-appcompat-v131 = { module = "androidx.appcompat:appcompat", version.ref = "appcompatVersion" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-hilt-compiler = { module = "androidx.hilt:hilt-compiler", version.ref = "androidxHiltCompiler" }
 androidx-hilt-compiler-v100 = { module = "androidx.hilt:hilt-compiler", version.ref = "androidxHiltCompilerVersion" }
@@ -64,6 +68,7 @@ androidx-hilt-navigation-fragment = { module = "androidx.hilt:hilt-navigation-fr
 androidx-hilt-work = { module = "androidx.hilt:hilt-work", version.ref = "androidxHiltCompilerVersion" }
 androidx-hilt-work-v120 = { module = "androidx.hilt:hilt-work", version.ref = "hiltWork" }
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
+androidx-recyclerview = { module = "androidx.recyclerview:recyclerview", version.ref = "recyclerview" }
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomRuntime" }
 androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomRuntime" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
@@ -71,6 +76,7 @@ androidx-viewpager2 = { module = "androidx.viewpager2:viewpager2", version.ref =
 androidx-viewpager2-v100 = { module = "androidx.viewpager2:viewpager2", version.ref = "viewpager2Version" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson" }
 converter-scalars = { module = "com.squareup.retrofit2:converter-scalars", version.ref = "converterScalars" }
+google-gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 gradle = { module = "com.android.tools.build:gradle", version.ref = "gradle" }
 gradle-v413 = { module = "com.android.tools.build:gradle", version.ref = "androidGradleVersion" }
 gradle-v741 = { module = "com.android.tools.build:gradle", version.ref = "androidGradle" }

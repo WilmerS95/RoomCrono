@@ -7,7 +7,7 @@
     "type": "radioButton",
     "tag": 1,
     "title": "¿Cuál es tu equipo de fútbol favorito?",
-    "options": ["Barcelona FC", "Real Mandril", "Comunicaciones", "Municipal", "InterMiami"],
+    "options": ["Barcelona FC", "Real Mandril", "Comunicaciones", "Municipal", "InterMiami", "prueba", "prueba", "prueba", "prueba", "prueba", "prueba", "prueba", "prueba", "prueba"],
     "value": "Barcelona FC"
   }
 ]

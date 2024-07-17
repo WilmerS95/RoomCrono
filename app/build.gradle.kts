@@ -71,6 +71,9 @@ dependencies {
     implementation (libs.retrofit)
     implementation (libs.retrofit2.converter.gson)
     implementation (libs.logging.interceptor)
+    implementation (libs.google.gson)
+    implementation (libs.androidx.recyclerview)
+    implementation (libs.androidx.appcompat.v131)
 
     //View Pager2
     implementation (libs.androidx.viewpager2.v100)
