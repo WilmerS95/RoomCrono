@@ -1,2 +1,2 @@
 # RoomCrono
-Proyecto ejercico con Hilt, Room, Retrofit, KForm
+Proyecto ejercicio con Hilt, Room, Retrofit, KForm
