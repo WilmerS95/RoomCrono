@@ -57,11 +57,15 @@ android {
 }
 
 dependencies {
+    implementation(files("../libs/form-debug.aar"))
+    api("com.github.vivchar:RendererRecyclerViewAdapter:3.0.1")
+    //implementation(files("../libs/form-release.aar"))
+    //implementation(files("../libs/out.aar"))
     //implementation(libs.androidx.room.compiler.processing.testing)
     //compile project(":tu-proyecto")
     //KformMaster
     //implementation("com.github.thejuki:k-form-master:8.3.0")
-    //implementation ("com.thejuki:k-form-master:8.3.0")
+    //implementation("com.thejuki:k-form-master:8.3.0")
 
     //Retrofit
     implementation (libs.retrofit)

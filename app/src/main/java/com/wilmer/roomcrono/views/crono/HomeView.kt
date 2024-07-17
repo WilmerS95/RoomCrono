@@ -1,6 +1,8 @@
 package com.wilmer.roomcrono.views.crono
 
+import android.content.Intent
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -10,6 +12,7 @@ import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material3.Button
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
@@ -22,17 +25,20 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.wilmer.roomcrono.R
 import com.wilmer.roomcrono.components.crono.CronoCard
 import com.wilmer.roomcrono.components.crono.FloatButton
 import com.wilmer.roomcrono.components.crono.MainTitle
 import com.wilmer.roomcrono.components.crono.formatoTiempo
 import com.wilmer.roomcrono.k_form.activities.FormExampleActivity
-import com.wilmer.roomcrono.k_form.fragments.FormExampleFragment
+import com.wilmer.roomcrono.k_form.activities.RadioButtonActivity
 import com.wilmer.roomcrono.view_models.accounts.AccountsViewModel
 import com.wilmer.roomcrono.view_models.crono.CronosViewModel
 import com.wilmer.roomcrono.views.accounts.AccountsView
@@ -85,7 +91,7 @@ fun HomeView(navController: NavController, cronosViewModel: CronosViewModel, acc
                 when (page) {
                     0 -> ContentHomeView(navController, cronosViewModel)
                     1 -> AccountsView(viewModel = accountsViewModel, navController = navController)
-                    2 -> FormExampleActivity()
+                    2 -> ContentFromExampleActivityView()
                 }
             }
         }
@@ -121,6 +127,35 @@ fun ContentHomeView(
                     }
                 }
             }
+        }
+    }
+}
+
+@Composable
+fun ContentFromExampleActivityView(){
+    val context = LocalContext.current
+
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Button(
+            onClick = {
+                val intent = Intent(context, FormExampleActivity::class.java)
+                context.startActivity(intent)
+            }
+        ) {
+            Text(text = "Primer ejemplo de formulario")
+        }
+
+        Button(
+            onClick = {
+                val intent = Intent(context, RadioButtonActivity::class.java)
+                context.startActivity(intent)
+            }
+        ) {
+            Text(text = "Ejemplo Radio Button")
         }
     }
 }

@@ -17,8 +17,13 @@
         android:theme="@style/Theme.RoomCrono"
         tools:targetApi="31">
         <activity
+            android:name=".k_form.activities.RadioButtonActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat"/>
+        <activity
             android:name=".k_form.activities.FormExampleActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
