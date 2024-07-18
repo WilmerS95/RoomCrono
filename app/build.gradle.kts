@@ -59,6 +59,7 @@ android {
 dependencies {
     implementation(files("../libs/form-debug.aar"))
     api("com.github.vivchar:RendererRecyclerViewAdapter:3.0.1")
+    implementation(libs.androidx.recyclerview)
     //implementation(files("../libs/form-release.aar"))
     //implementation(files("../libs/out.aar"))
     //implementation(libs.androidx.room.compiler.processing.testing)
