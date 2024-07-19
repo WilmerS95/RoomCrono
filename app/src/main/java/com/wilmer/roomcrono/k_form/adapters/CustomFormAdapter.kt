@@ -7,6 +7,8 @@ import android.widget.LinearLayout
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
+import androidx.compose.ui.unit.dp
+import androidx.core.view.marginBottom
 import androidx.recyclerview.widget.RecyclerView
 import com.thejuki.kformmaster.model.BaseFormElement
 import com.thejuki.kformmaster.model.FormHeader
@@ -45,6 +47,15 @@ class CustomFormAdapter(private val elements: List<BaseFormElement<*>>) :
 
             radioGroup.removeAllViews()
 
+            val divider = View(itemView.context).apply {
+                layoutParams = ViewGroup.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    1
+                )
+                setBackgroundColor(itemView.resources.getColor(android.R.color.darker_gray))
+            }
+            radioGroup.addView(divider)
+
             options.forEachIndexed { index, option ->
                 val optionView = LayoutInflater.from(itemView.context)
                     .inflate(R.layout.custom_radio_button_option, radioGroup, false) as LinearLayout
@@ -56,7 +67,7 @@ class CustomFormAdapter(private val elements: List<BaseFormElement<*>>) :
 
                 radioGroup.addView(optionView)
 
-                if (index < options.size - 1) {
+                if (index < options.size) {
                     val divider = View(itemView.context).apply {
                         layoutParams = ViewGroup.LayoutParams(
                             ViewGroup.LayoutParams.MATCH_PARENT,
