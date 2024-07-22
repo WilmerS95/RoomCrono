@@ -4,21 +4,22 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.thejuki.kformmaster.adapter.FormAdapter
 import com.thejuki.kformmaster.helper.FormBuildHelper
 import com.thejuki.kformmaster.listener.OnFormElementValueChangedListener
 import com.thejuki.kformmaster.model.BaseFormElement
 import com.thejuki.kformmaster.model.FormHeader
 import com.thejuki.kformmaster.model.FormRadioButtonElement
+import com.thejuki.kformmaster.model.custom.FormRadioButton
+import com.thejuki.kformmaster.model.custom.FormRadioButtonHeader
 import com.wilmer.roomcrono.R
 import com.wilmer.roomcrono.databinding.ActivityRadioButtonBinding
-import com.wilmer.roomcrono.k_form.adapters.CustomFormAdapter
-import com.wilmer.roomcrono.model.form.FormJson
 import java.io.InputStreamReader
 
 class RadioButtonActivity : AppCompatActivity(), OnFormElementValueChangedListener {
     private lateinit var binding: ActivityRadioButtonBinding
     private lateinit var formBuilder: FormBuildHelper
-    private lateinit var adapter: CustomFormAdapter
+    private lateinit var adapter: FormAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,29 +33,30 @@ class RadioButtonActivity : AppCompatActivity(), OnFormElementValueChangedListen
     private fun setupForm() {
         val inputStream = resources.openRawResource(R.raw.form)
         val json = InputStreamReader(inputStream).readText()
-        val formElements = FormJson.parseJson(json)
+        val formElements = com.thejuki.kformmaster.model.FormJson.parseJson(json)
 
         val elements = formElements.map { element ->
             when (element) {
-                is com.wilmer.roomcrono.model.form.FormHeader -> {
+                is FormRadioButtonHeader -> {
                     FormHeader().apply {
                         title = element.title
                     }
                 }
-                is com.wilmer.roomcrono.model.form.FormRadioButton -> {
+                is FormRadioButton -> {
                     FormRadioButtonElement<String>().apply {
                         title = element.title
                         options = element.options
                         tag = element.tag
                         value = element.value
-                        //layoutResource = R.layout.custom_radio_button_element
                     }
                 }
                 else -> null
             }
         }.filterNotNull()
 
-        adapter = CustomFormAdapter(elements)
+        adapter = FormAdapter(elements){ element ->
+            formBuilder.onValueChanged(element)
+        }
 
         binding.rvRadioButton.adapter = adapter
         binding.rvRadioButton.layoutManager = LinearLayoutManager(this)
