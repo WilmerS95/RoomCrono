@@ -19,11 +19,11 @@
         <activity
             android:name=".k_form.activities.RadioButtonActivity"
             android:exported="false"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/Theme.RoomCrono" />
         <activity
             android:name=".k_form.activities.FormExampleActivity"
             android:exported="false"
-            android:theme="@style/Theme.AppCompat" />
+            android:theme="@style/Theme.RoomCrono" />
         <activity
             android:name=".MainActivity"
             android:exported="true"

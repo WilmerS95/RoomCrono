@@ -13,14 +13,11 @@ import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.Button
-import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRow
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -32,10 +29,9 @@ import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.wilmer.roomcrono.R
+import com.wilmer.roomcrono.components.crono.AppToolbar
 import com.wilmer.roomcrono.components.crono.CronoCard
 import com.wilmer.roomcrono.components.crono.FloatButton
-import com.wilmer.roomcrono.components.crono.MainTitle
 import com.wilmer.roomcrono.components.crono.formatoTiempo
 import com.wilmer.roomcrono.k_form.activities.FormExampleActivity
 import com.wilmer.roomcrono.k_form.activities.RadioButtonActivity
@@ -54,16 +50,6 @@ fun HomeView(navController: NavController, cronosViewModel: CronosViewModel, acc
     val tabTitles = listOf("Cronómetro", "Cuentas", "Formularios Dinámicos")
 
     Scaffold(
-        topBar = {
-            CenterAlignedTopAppBar(
-                title = {
-                    MainTitle(title = "--- Crono App ---")
-                },
-                colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.primary
-                )
-            )
-        },
         floatingActionButton = {
             if (pagerState.currentPage == 0) {
                 FloatButton {

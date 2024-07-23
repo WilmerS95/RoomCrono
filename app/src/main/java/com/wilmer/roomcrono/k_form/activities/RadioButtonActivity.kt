@@ -2,18 +2,17 @@ package com.wilmer.roomcrono.k_form.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.thejuki.kformmaster.adapter.FormAdapter
 import com.thejuki.kformmaster.helper.FormBuildHelper
 import com.thejuki.kformmaster.listener.OnFormElementValueChangedListener
 import com.thejuki.kformmaster.model.BaseFormElement
-import com.thejuki.kformmaster.model.FormHeader
 import com.thejuki.kformmaster.model.FormRadioButtonElement
 import com.thejuki.kformmaster.model.custom.FormRadioButton
-import com.thejuki.kformmaster.model.custom.FormRadioButtonHeader
 import com.wilmer.roomcrono.R
+import com.wilmer.roomcrono.components.crono.AppToolbar
 import com.wilmer.roomcrono.databinding.ActivityRadioButtonBinding
+import com.wilmer.roomcrono.ui.theme.RoomCronoTheme
 import java.io.InputStreamReader
 
 class RadioButtonActivity : AppCompatActivity(), OnFormElementValueChangedListener {
@@ -26,6 +25,14 @@ class RadioButtonActivity : AppCompatActivity(), OnFormElementValueChangedListen
         binding = ActivityRadioButtonBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.composeToolbar.setContent {
+            RoomCronoTheme {
+                AppToolbar(title = "--- Radio Button ---", showBackButton = true) {
+                    onBackPressedDispatcher.onBackPressed()
+                }
+            }
+        }
+
         formBuilder = FormBuildHelper(listener = this, recyclerView = binding.rvRadioButton)
         setupForm()
     }
@@ -37,11 +44,6 @@ class RadioButtonActivity : AppCompatActivity(), OnFormElementValueChangedListen
 
         val elements = formElements.map { element ->
             when (element) {
-                is FormRadioButtonHeader -> {
-                    FormHeader().apply {
-                        title = element.title
-                    }
-                }
                 is FormRadioButton -> {
                     FormRadioButtonElement<String>().apply {
                         title = element.title
@@ -54,13 +56,13 @@ class RadioButtonActivity : AppCompatActivity(), OnFormElementValueChangedListen
             }
         }.filterNotNull()
 
-        adapter = FormAdapter(elements){ element ->
+        adapter = FormAdapter(elements) { element ->
             formBuilder.onValueChanged(element)
         }
 
         binding.rvRadioButton.adapter = adapter
         binding.rvRadioButton.layoutManager = LinearLayoutManager(this)
-        binding.rvRadioButton.addItemDecoration(DividerItemDecoration(this, LinearLayoutManager.VERTICAL))
+        //binding.rvRadioButton.addItemDecoration(DividerItemDecoration(this, LinearLayoutManager.VERTICAL))
 
         /*formBuilder.addFormElements(elements)
 
@@ -69,7 +71,6 @@ class RadioButtonActivity : AppCompatActivity(), OnFormElementValueChangedListen
         /*val layoutManager = LinearLayoutManager(this)
         binding.rvRadioButton.layoutManager = layoutManager
         binding.rvRadioButton.addItemDecoration(DividerItemDecoration(this, layoutManager.orientation))*/
-
     }
 
     override fun onValueChanged(formElement: BaseFormElement<*>) {
