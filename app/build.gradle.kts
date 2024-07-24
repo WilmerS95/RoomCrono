@@ -87,6 +87,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.runtime.livedata)
     //implementation(libs.androidx.room.compiler.processing.testing)
     this.kapt(libs.androidx.room.compiler)
 

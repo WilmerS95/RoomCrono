@@ -8,7 +8,9 @@ import com.thejuki.kformmaster.model.BaseFormElement
 import com.thejuki.kformmaster.model.FormEmailEditTextElement
 import com.thejuki.kformmaster.model.FormPasswordEditTextElement
 import com.wilmer.roomcrono.R
+import com.wilmer.roomcrono.components.crono.AppToolbar
 import com.wilmer.roomcrono.databinding.ActivityFormExampleBinding
+import com.wilmer.roomcrono.ui.theme.RoomCronoTheme
 
 class FormExampleActivity : AppCompatActivity() {
     private lateinit var binding: ActivityFormExampleBinding
@@ -18,6 +20,14 @@ class FormExampleActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityFormExampleBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.composeToolbar.setContent {
+            RoomCronoTheme {
+                AppToolbar(title = "--- Primer ejemplo ---", showBackButton = true) {
+                    onBackPressedDispatcher.onBackPressed()
+                }
+            }
+        }
 
         setupForm()
 

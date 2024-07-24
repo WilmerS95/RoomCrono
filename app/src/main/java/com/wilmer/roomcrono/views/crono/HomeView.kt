@@ -13,12 +13,12 @@ import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.Button
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRow
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
@@ -29,7 +29,6 @@ import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.wilmer.roomcrono.components.crono.AppToolbar
 import com.wilmer.roomcrono.components.crono.CronoCard
 import com.wilmer.roomcrono.components.crono.FloatButton
 import com.wilmer.roomcrono.components.crono.formatoTiempo
@@ -42,14 +41,21 @@ import kotlinx.coroutines.launch
 import me.saket.swipe.SwipeAction
 import me.saket.swipe.SwipeableActionsBox
 
-@OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun HomeView(navController: NavController, cronosViewModel: CronosViewModel, accountsViewModel: AccountsViewModel) {
+
+    LaunchedEffect(Unit) {
+        accountsViewModel.updateTitle("--- Crono App ---")
+        accountsViewModel.updateShowBackButton(false)
+    }
+
     val pagerState = rememberPagerState(pageCount = { 3 })
     val scope = rememberCoroutineScope()
     val tabTitles = listOf("Cronómetro", "Cuentas", "Formularios Dinámicos")
 
     Scaffold(
+
         floatingActionButton = {
             if (pagerState.currentPage == 0) {
                 FloatButton {
@@ -61,6 +67,8 @@ fun HomeView(navController: NavController, cronosViewModel: CronosViewModel, acc
         Column(
             modifier = Modifier.padding(it)
         ) {
+
+            
             TabRow(selectedTabIndex = pagerState.currentPage) {
                 tabTitles.forEachIndexed { index, title ->
                     Tab(

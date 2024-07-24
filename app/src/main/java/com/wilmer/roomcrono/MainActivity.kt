@@ -8,6 +8,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import com.wilmer.roomcrono.components.crono.AppToolbar
 import com.wilmer.roomcrono.navigation.NavManager
@@ -32,7 +34,14 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     Column {
-                        AppToolbar(title = "--- Crono App ---"){}
+                        val title by accountsViewModel.title.observeAsState("--- Crono App ---")
+                        val showBackButton by accountsViewModel.showBackButton.observeAsState(false)
+                        AppToolbar(
+                            title = title,
+                            showBackButton = showBackButton
+                        ) {
+                            onBackPressedDispatcher.onBackPressed()
+                        }
                         NavManager(cronometroViewModel, cronosViewModel, accountsViewModel)
                     }
                 }

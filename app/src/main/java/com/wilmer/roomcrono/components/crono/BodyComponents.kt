@@ -1,5 +1,6 @@
 package com.wilmer.roomcrono.components.crono
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -8,10 +9,10 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.CenterAlignedTopAppBar
-import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -21,7 +22,6 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -48,6 +48,7 @@ fun MainTextField(value: String, onValueChange: (String) -> Unit, label: String)
     )
 }
 
+@SuppressLint("DefaultLocale")
 @Composable
 fun formatoTiempo(tiempo: Long): String {
     val segundos = (tiempo / 1000) % 60
@@ -85,7 +86,7 @@ fun CronoCard(title: String, crono: String, onClick: () -> Unit) {
                     fontSize = 20.sp
                 )
             }
-            Divider(
+            HorizontalDivider(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(2.dp),
@@ -97,16 +98,16 @@ fun CronoCard(title: String, crono: String, onClick: () -> Unit) {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AppToolbar(title: String, showBackButton: Boolean = false, onClick: () -> Unit) {
+fun AppToolbar(title: String, showBackButton: Boolean = false, onClick: (()-> Unit)? = null) {
     CenterAlignedTopAppBar(
         title = {
             MainTitle(title = title)
         },
         navigationIcon = {
             if (showBackButton) {
-                IconButton(onClick = onClick) {
+                IconButton(onClick = { onClick?.invoke() }) {
                     Icon(
-                        imageVector = Icons.Default.ArrowBack,
+                        imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                         contentDescription = "Back",
                         tint = Color.White
                     )

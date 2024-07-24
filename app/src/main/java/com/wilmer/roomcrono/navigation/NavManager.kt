@@ -33,8 +33,7 @@ fun NavManager(cronometroViewModel: CronometroViewModel, cronosViewModel: Cronos
         composable("AccountsById/{id}", arguments = listOf(
             navArgument("id"){type = NavType.LongType}
         )){
-            val id = it.arguments?.getLong("id") ?: 0
-            AccountsByIdView(accountsViewModel, navController)
+            AccountsByIdView(accountsViewModel)
         }
         /*composable("AccountsView"){
             AccountsView(viewModel, navController)

@@ -8,15 +8,13 @@
     android:background="@color/white"
     tools:context=".k_form.activities.FormExampleActivity">
 
-    <TextView
-        android:layout_width="match_parent"
+    <androidx.compose.ui.platform.ComposeView
+        android:id="@+id/compose_toolbar"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Hola mundo"
-        android:padding="16dp"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/rv_form_example"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_form_example"
