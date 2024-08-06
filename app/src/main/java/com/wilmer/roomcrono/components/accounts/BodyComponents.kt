@@ -39,7 +39,7 @@ fun CardAccount(accountsModel: AccountsModel, onClick: (Int) -> Unit = {}) {
             .shadow(30.dp)
             .clickable { onClick(accountsModel.id) }
             .fillMaxWidth()
-            .background(color = Color.Transparent)
+            .background(color = Color.Transparent   )
     ) {
         Row (
             modifier = Modifier
